@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+// Spring Boot Core Dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-batch:2.7.5' // Spring Batch
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.5' // Spring Web
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:2.7.5'
+
+    // MyBatis
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1' // MyBatis Spring Boot Starter
+
+    // MariaDB JDBC Driver
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:3.1.4' // MariaDB JDBC Driver
+
+    compileOnly 'org.projectlombok:lombok:1.18.28' // Lombok (컴파일 타임 전용)
+    annotationProcessor 'org.projectlombok:lombok:1.18.28' // Lombok Annotation Processor
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.5' // Spring Boot Testing Framework
+    testImplementation 'org.springframework.batch:spring-batch-test:4.3.7' // Spring Batch Test
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

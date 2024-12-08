@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: BatchTest1
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    jdbc-url: jdbc:mariadb://localhost:3306/MAS?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    mapper-locations: classpath:/mybatis/mapper/**/*.xml
+
+    hikari:
+      data-source-properties:
+        isolation: READ-COMMITTED
+
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
